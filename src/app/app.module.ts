@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms'
+
 
 // Material UI
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -61,7 +61,7 @@ const config = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    ReactiveFormsModule,
+    
 
   
     BrowserAnimationsModule,

@@ -10,23 +10,23 @@
                 <div class="form-group">
                     <label for="exampleInputPassword1">Sign the card for (Recipient)</label>
                     <input type="email" class="form-control" id="exampleInputPassword1" 
-                    formControlName="cardFor" placeholder="Recipient">
+                    formControlName="cardFor">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Recipient's Email</label>
                     <input type="email" class="form-control" id="exampleInputPassword1" 
-                    formControlName="cardForEmail" placeholder="Recipient">
+                    formControlName="cardForEmail">
                   </div>
               
                 <div class="form-group">
                     <label for="exampleInputPassword1">Sender's Name</label>
                     <input type="email" class="form-control" id="exampleInputPassword1" 
-                    formControlName="requestor" placeholder="CreatorName">
+                    formControlName="requestor">
                   </div>
                 
-                <button type="submit" [disabled]="contactForm.pristine">Save</button>
-                <button type="reset" (click)="revert()" [disabled]="contactForm.pristine">
-                    Revert
+                <button class="btn btn-outline-primary btn-space" type="submit" [disabled]="contactForm.pristine">Create </button>
+                <button class="btn btn-outline-primary btn-space" type="reset" (click)="revert()" [disabled]="contactForm.pristine">
+                    Clear
                 </button>
               </form>
 
