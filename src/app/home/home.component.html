@@ -1,6 +1,7 @@
 <div class="container py-5">
     <div class="row">
-      <mat-card class="item" *ngFor="let sample of exampleCards" class="custom-card" >
+      <mat-card *ngFor="let sample of exampleCards"
+                class="item custom-card fixed-size" >
         <img mat-card-image class="fixed-size"
              (click)="goToCard(sample.type)"
              src="{{ 'assets/' + sample.type + '.png' }}" alt="B day" >
