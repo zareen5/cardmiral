@@ -59,6 +59,7 @@ const config = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    BrowserAnimationsModule,
     NgbModule,
     FlexLayoutModule
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CardsService } from '../services/card.service';
 
 @Component({
@@ -9,10 +9,12 @@ import { CardsService } from '../services/card.service';
 })
 export class CreateCardComponent implements OnInit {
   type: any;
+   id!: string;
 
   constructor(
     public cardsService: CardsService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router ) { }
 
   ngOnInit(): void {
     this.type = this.route.snapshot.paramMap.get('type');
@@ -24,6 +26,9 @@ export class CreateCardComponent implements OnInit {
     let data = this.cardsService.cardForm.value;
     this.cardsService.createCard({'type': this.type, ...data})
       .then(res => {
+        this.id = res.id;
+        this.cardsService.cardForm.reset();
+        this.router.navigate(['add-wishes', this.id]);
         this.cardsService.messageForm.reset();
       });
   }
