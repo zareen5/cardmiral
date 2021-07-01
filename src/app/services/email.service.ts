@@ -26,7 +26,7 @@ export class EmailService {
       month: card.scheduledTime?.getMonth.toString() || '',
       hour: card.scheduledTime?.getHours.toString() || '',
       minute: card.scheduledTime?.getMinutes.toString() || '',
-      cardUrl: 'http://localhost:4200/add-wishes/' + card.id
+      cardUrl: 'http://localhost:4200/view-card/' + card.id
 
     }
 

@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 // Custom Component
 import { HomeComponent } from './home/home.component';
 import { CreateCardComponent } from './create-card/create-card.component';
+import { ViewCardComponent } from './view-card/view-card.component';
 import { AddWishesComponent } from './add-wishes/add-wishes.component';
 import { CardTemplatesComponent } from './components/card-templates/card-templates.component';
 
@@ -45,6 +46,7 @@ const config = {
     AppComponent,
     HomeComponent,
     CreateCardComponent,
+    ViewCardComponent,
     AddWishesComponent,
     CardTemplatesComponent
   ],
