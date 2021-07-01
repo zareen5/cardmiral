@@ -6,19 +6,33 @@ import { Message } from '../models/message.model';
 
 const COLLECTION_NAME: string = "cards";
 
+const DEFAULT_CARD: Card = {
+  recipient: '',
+  email: '',
+  sender: '',
+  type: '',
+  messages: []
+}
+
 @Injectable({
   providedIn: "root"
 })
 export class CardsService {  
   constructor(private db: AngularFirestore) { }
   
-  form = new FormGroup({        
+  cardForm = new FormGroup({
+    recipient: new FormControl(''),
+    email: new FormControl(''),
+    sender: new FormControl(''),
+  });
+
+  messageForm = new FormGroup({        
     message: new FormControl(''),
     signature: new FormControl('')
   })
   
-  createCard(card: Card): void {
-    this.db.collection(COLLECTION_NAME).add(card);
+  createCard(card: Card) {
+    return this.db.collection(COLLECTION_NAME).add({DEFAULT_CARD, ...card});
   }
 
   retrieveCard(cardId: string) {
