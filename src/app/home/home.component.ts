@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from '../models/card.modele';
+import { Card } from '../models/card.model';
 import { CardsService } from '../services/card.service';
 
 @Component({
@@ -9,25 +9,29 @@ import { CardsService } from '../services/card.service';
 })
 export class HomeComponent implements OnInit {
 
-  exampleCardA: Card = {
-    id: 'test-id',
-    recipient: 'Ola',
-    email: 'ola@mail.com',
-    sender: 'Mark',
-    type: 'Congratulations',
-    scheduledTime: new Date(2020, 7, 1),
-    messages: []
-  }
-
-  exampleCardB: Card = {
-    id: 'test-id',
-    recipient: 'Wumi',
-    email: 'ola@mail.com',
-    sender: 'Mark',
-    type: 'Happy BirthDay',
-    scheduledTime: new Date(2020, 7, 1),
-    messages: []
-  }
+  exampleCards: Card[] = [
+    {
+      recipient: 'Olawumi',
+      email: 'ola@mail.com',
+      sender: 'Mark',
+      type: 'Congratulations',
+      messages: []
+    },
+    {
+      recipient: 'Fatema',
+      email: 'ola@mail.com',
+      sender: 'Mark',
+      type: 'Happy BirthDay',
+      messages: []
+    },
+    {
+      recipient: 'Safura',
+      email: 'ola@mail.com',
+      sender: 'Mark',
+      type: 'Good Luck',
+      messages: []
+    }
+  ];
 
   constructor(private cardsService: CardsService) { }
 
@@ -35,8 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   // TODO added for testing puposes
-  public createCard() {
-    this.cardsService.createCard(this.exampleCardA);
+  public createCard(example: Card) {
+    this.cardsService.createCard(example);
   }
-
 }

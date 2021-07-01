@@ -1,1 +1,32 @@
-<p>add-wishes works!</p>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6">
+            <mat-card class="item" *ngIf="selectedCard">
+                <h2>{{ selectedCard.recipient }}</h2>
+                <p>
+                    {{ selectedCard.type }}
+                </p>
+                <tr *ngFor="let message of selectedCard.messages">
+                    <td>{{ message.message }}</td>
+                    <td>{{ message.signature }}</td>
+                </tr>
+            </mat-card>
+        </div>
+        <div class="col-md-6">
+            <form [formGroup]="this.cardsService.form">
+                <input placeholder="Message" 
+                       formControlName="message" 
+                       type="text" 
+                       class="input-field col s12">
+                <input placeholder="Signature" 
+                       formControlName="signature" 
+                       type="text" 
+                       class="input-field col s12">
+                <button class="waves-effect waves-light btn col s12"
+                        (click)="onSubmit()">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

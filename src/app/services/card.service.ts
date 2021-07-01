@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Card } from '../models/card.modele';
+import { Card } from '../models/card.model';
 import { Message } from '../models/message.model';
 
 const COLLECTION_NAME: string = "cards";
@@ -10,22 +11,23 @@ const COLLECTION_NAME: string = "cards";
 })
 export class CardsService {  
   constructor(private db: AngularFirestore) { }
-
-  createCard(card: Card) {
-      return new Promise<any>((resolve, reject) =>{
-        this.db.collection(COLLECTION_NAME).add(card).then(res => {}, err => reject(err));
-    });
+  
+  form = new FormGroup({        
+    message: new FormControl(''),
+    signature: new FormControl('')
+  })
+  
+  createCard(card: Card): void {
+    this.db.collection(COLLECTION_NAME).add(card);
   }
 
-  retrieveCard(cardId: string): Card {
-    return this.db.collection(COLLECTION_NAME).doc(cardId) as any as Card;
+  retrieveCard(cardId: string) {
+    return this.db.collection(COLLECTION_NAME).doc(cardId).snapshotChanges();
   }
 
-  addMessage(cardId: string, newMessage: Message) {
-    const originalMessages: Message[] = this.retrieveCard(cardId).messages;
-
+  addMessage(cardId: string, currentCard: Card, newMessage: Message) {
     return this.db.collection(COLLECTION_NAME).doc(cardId).set(
-      { messages: originalMessages.push(newMessage)}, {merge: true}
+      { messages: currentCard.messages.concat(newMessage)}, {merge: true}
     )
   }
 }

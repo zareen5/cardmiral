@@ -1,11 +1,11 @@
 import { Message } from "./message.model";
 
 export interface Card {
-    id: string
+    id?: string
     recipient: string
     email: string
     sender: string
     type: string
-    scheduledTime: Date
+    scheduledTime?: Date
     messages: Message[]
 }
