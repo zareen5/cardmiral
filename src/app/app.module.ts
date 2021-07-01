@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// Material UI
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+
+// Custom Component
+import { HomeComponent } from './home/home.component';
 import { CreateCardComponent } from './create-card/create-card.component';
 import { AddWishesComponent } from './add-wishes/add-wishes.component';
 
@@ -27,6 +33,7 @@ const config = {
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     CreateCardComponent,
     AddWishesComponent
   ],
@@ -35,6 +42,7 @@ const config = {
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,
+    MatCardModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
