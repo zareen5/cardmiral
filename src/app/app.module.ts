@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Firebase and Firestore
 import { AngularFireModule } from '@angular/fire';
@@ -32,9 +33,10 @@ const config = {
     MatIconModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(config),
-    AngularFirestoreModule, // firestore
-    AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
