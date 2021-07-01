@@ -16,7 +16,8 @@ export class CreateCardComponent implements OnInit {
   constructor(
     public cardsService: CardsService,
     private emailService: EmailService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router ) { }
 
   ngOnInit(): void {
     this.card = DEFAULT_CARD;
@@ -35,7 +36,7 @@ export class CreateCardComponent implements OnInit {
         this.modalVisible = true;
 
         this.emailService.scheduleEmail(this.card);
-
+        this.router.navigate(['add-wishes', this.id]);
         /// http://localhost:4200/add-wishes/mg2Ra5oyVxBQcQ0cs43G TODO: show on modal
       });
   }
