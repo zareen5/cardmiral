@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Card } from '../models/card.model';
 import { CardsService, DEFAULT_CARD } from '../services/card.service';
 import { EmailService } from '../services/email.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LinkModalComponent } from '../components/link-modal/link-modal.component';
 
 @Component({
   selector: 'app-create-card',
@@ -10,34 +13,34 @@ import { EmailService } from '../services/email.service';
 })
 export class CreateCardComponent implements OnInit {
   card: any;
-  id!: string;
-  modalVisible: boolean = false;
 
   constructor(
     public cardsService: CardsService,
     private emailService: EmailService,
     private route: ActivatedRoute,
-    private router: Router ) { }
+    public dialog: MatDialog ) { }
 
   ngOnInit(): void {
     this.card = DEFAULT_CARD;
     this.card.type = this.route.snapshot.paramMap.get('type');
-   }
+  }
 
-  revert (){}
+  openDialog(url: string) {
+    this.dialog
+      .open(LinkModalComponent, { data: "http://localhost:4200/add-wishes/" + url})
+      .afterClosed().subscribe(() => {});
+  }
 
   onSubmit(){
-    let data = this.cardsService.cardForm.value;
-    this.cardsService.createCard({...this.card, ...data})
+    let data: Card = {...this.card, ...this.cardsService.cardForm.value};
+    this.cardsService.createCard(data)
       .then(res => {
-        this.id = res.id;
-        this.cardsService.cardForm.reset();
-        this.cardsService.messageForm.reset();
-        this.modalVisible = true;
+        data.id = res.id;
+        this.cardsService.reset();
 
-        this.emailService.scheduleEmail(this.card);
-        this.router.navigate(['add-wishes', this.id]);
-        /// http://localhost:4200/add-wishes/mg2Ra5oyVxBQcQ0cs43G TODO: show on modal
+        this.emailService.scheduleEmail(data).subscribe(() => {
+          this.openDialog(res.id);
+        });
       });
   }
 }

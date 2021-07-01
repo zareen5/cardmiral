@@ -20,10 +20,11 @@ export class CardTemplatesComponent implements OnInit {
   }
 
   getCover() {
-    return 'assets/' + this.card.type + '.png';
-  }
-
-  getBlank() {
-    return 'assets/blank.png';
+    if (this.card.type) {
+      return 'assets/' + this.card.type + '.png';
+    }
+    else {
+      return 'assets/blank.png';
+    }
   }
 }

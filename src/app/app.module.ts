@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Custom Component
 import { HomeComponent } from './home/home.component';
@@ -18,6 +19,7 @@ import { CreateCardComponent } from './create-card/create-card.component';
 import { ViewCardComponent } from './view-card/view-card.component';
 import { AddWishesComponent } from './add-wishes/add-wishes.component';
 import { CardTemplatesComponent } from './components/card-templates/card-templates.component';
+import { LinkModalComponent } from './components/link-modal/link-modal.component';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -26,7 +28,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Services
 import { CardsService } from './services/card.service';
@@ -48,7 +49,8 @@ const config = {
     CreateCardComponent,
     ViewCardComponent,
     AddWishesComponent,
-    CardTemplatesComponent
+    CardTemplatesComponent,
+    LinkModalComponent
   ],
   imports: [
     BrowserModule,
@@ -57,17 +59,15 @@ const config = {
     MatIconModule,
     MatGridListModule,
     MatCardModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
-    AngularFireAuthModule,
     AngularFireStorageModule,
-    BrowserAnimationsModule,
     NgbModule,
     FlexLayoutModule,
     HttpClientModule
-
   ],
   providers: [
     CardsService,

@@ -6,15 +6,10 @@ export interface Card {
     email: string
     sender: string
     type: string
-    scheduledTime: Date
+    scheduledTime: {
+        day: number
+        month: number
+        year: number
+    }
     messages: Message[]
-}
-
-
-export interface NewCard {
-    creatorEmail: string;
-    card: Card;
-    toEmail: string;
-    introMessage: string;
-    expiryData: Date;
 }

@@ -10,41 +10,29 @@ import { CardsService } from '../services/card.service';
 })
 export class HomeComponent implements OnInit {
 
+  coverImages: string[] = ['bday1', 'bday2', 'cong1', 'cong2'];
 
-  exampleCardA: Card = {
-    id: 'test-id',
-    recipient: 'Ola',
-    email: 'ola@mail.com',
-    sender: 'Mark',
-    type: 'Happy BirthDay',
-    scheduledTime: new Date(2020, 7, 1),
-    messages: []
-  }
-
-  exampleCardB: Card = {
-    id: 'test-id',
-    recipient: 'Wumi',
-    email: 'ola@mail.com',
-    sender: 'Mark', 
-    type: 'Congratulations',
-    scheduledTime: new Date(2020, 7, 1),
-    messages: []
-  }
-
+  exampleCards: Card[] = this.coverImages.map((type: string) => {
+    return {
+      recipient: '',
+      email: '',
+      sender: '',
+      type: type,
+      scheduledTime: {
+        day: 2,
+        month: 7,
+        year: 2021
+      },
+      messages: []
+    }});
 
   constructor(private cardsService: CardsService, private router: Router  ) { }
 
   ngOnInit(): void {
+    //
   }
 
   goToCard(val: string) {
     this.router.navigate(['new-card', val]);
-  }
-
-
-
-  // TODO added for testing puposes
-  public createCard(example: Card) {
-    this.cardsService.createCard(example);
   }
 }

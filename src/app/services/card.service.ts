@@ -11,7 +11,11 @@ export const DEFAULT_CARD: Card = {
   email: '',
   sender: '',
   type: '',
-  scheduledTime: new Date(),
+  scheduledTime: {
+    day: 2,
+    month: 7,
+    year: 2021
+  },
   messages: []
 }
 
@@ -25,14 +29,18 @@ export class CardsService {
     recipient: new FormControl(''),
     email: new FormControl(''),
     sender: new FormControl(''),
-    sendDate:  new FormControl({day: 1, month:1, year:2021})
-    
+    scheduledTime: new FormControl({day: 2, month: 7, year:2021})
   });
 
   messageForm = new FormGroup({        
     message: new FormControl(''),
     signature: new FormControl('')
   })
+
+  reset() {
+    this.cardForm.reset();
+    this.messageForm.reset();
+  }
   
   createCard(card: Card) {
     return this.db.collection(COLLECTION_NAME).add({...DEFAULT_CARD, ...card});

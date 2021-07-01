@@ -32,7 +32,7 @@ export class AddWishesComponent implements OnInit {
     let data = this.cardsService.messageForm.value;
     this.cardsService.addMessage(this.cardId, this.selectedCard, data)
       .then(res => {
-        this.cardsService.messageForm.reset();
+        this.cardsService.reset();
       });
   }
 }
