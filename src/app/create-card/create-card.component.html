@@ -4,7 +4,7 @@
       <app-card-templates [card]="card"></app-card-templates>
     </div>
     <div class="col-md-6">
-  
+
       <form [formGroup]="this.cardsService.cardForm" (ngSubmit)="onSubmit()" novalidate >
         <div class="form-group">
           <label for="exampleInputPassword1">Sign the card for (Recipient)</label>
@@ -20,6 +20,19 @@
           <input type="email" class="form-control" id="exampleInputPassword1" formControlName="sender">
         </div>
 
+
+        <div class="form-group">
+
+          <label for="exampleInputPassword1">Send Date</label>
+          <div class="input-group mb-3">
+            <input #licenseExpiration="ngbDatepicker" class="form-control" [formControlName]="'sendDate'" ngbDatepicker />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary"  (click)="licenseExpiration.toggle()" type="button">Pick Date</button>
+            </div>
+          </div>
+
+        </div>
+
         <button class="btn btn-outline-primary btn-space" type="submit"
           [disabled]="this.cardsService.cardForm.pristine">Create</button>
         <button class="btn btn-outline-primary btn-space" type="reset" (click)="revert()"
@@ -28,7 +41,7 @@
         </button>
       </form>
 
-      
+ 
 
     </div>
   </div>

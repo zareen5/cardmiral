@@ -25,6 +25,8 @@ export class CardsService {
     recipient: new FormControl(''),
     email: new FormControl(''),
     sender: new FormControl(''),
+    sendDate:  new FormControl({day: 1, month:1, year:2021})
+    
   });
 
   messageForm = new FormGroup({        
