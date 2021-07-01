@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms'
 
 // Material UI
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -14,6 +15,11 @@ import { MatCardModule } from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
 import { CreateCardComponent } from './create-card/create-card.component';
 import { AddWishesComponent } from './add-wishes/add-wishes.component';
+import { CardTemplatesComponent } from './components/card-templates/card-templates.component';
+
+import {MatGridListModule} from '@angular/material/grid-list';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 // Firebase and Firestore
 import { AngularFireModule } from '@angular/fire';
@@ -38,20 +44,28 @@ const config = {
     AppComponent,
     HomeComponent,
     CreateCardComponent,
-    AddWishesComponent
+    AddWishesComponent,
+    CardTemplatesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,
+    MatGridListModule,
     MatCardModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    NgbModule
+    ReactiveFormsModule,
+
+  
+    BrowserAnimationsModule,
+    NgbModule,
+    FlexLayoutModule
+
   ],
   providers: [CardsService],
   bootstrap: [AppComponent]
