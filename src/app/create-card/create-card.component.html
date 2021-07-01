@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-6">
   
-      <form [formGroup]="this.cardsService.cardForm" (ngSubmit)="onSubmit()" novalidate>
+      <form [formGroup]="this.cardsService.cardForm" (ngSubmit)="onSubmit()" novalidate >
         <div class="form-group">
           <label for="exampleInputPassword1">Sign the card for (Recipient)</label>
           <input type="email" class="form-control" id="exampleInputPassword1" formControlName="recipient">
