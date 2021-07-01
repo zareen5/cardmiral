@@ -1,30 +1,22 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-md-6">
-            <mat-card class="item" *ngIf="selectedCard">
-                <h2>{{ selectedCard.recipient }}</h2>
-                <p>
-                    {{ selectedCard.type }}
-                </p>
-                <tr *ngFor="let message of selectedCard.messages">
-                    <td>{{ message.message }}</td>
-                    <td>{{ message.signature }}</td>
-                </tr>
-            </mat-card>
+            <app-card-templates [card]="selectedCard">
+            </app-card-templates>
         </div>
         <div class="col-md-6">
-            <form [formGroup]="this.cardsService.messageForm">
-                <input placeholder="Message" 
-                       formControlName="message" 
-                       type="text" 
-                       class="input-field col s12">
-                <input placeholder="Signature" 
-                       formControlName="signature"
-                       type="text" 
-                       class="input-field col s12">
-                <button class="waves-effect waves-light btn col s12"
-                        (click)="onSubmit()">
-                    Submit
+            <form [formGroup]="this.cardsService.messageForm"  (ngSubmit)="onSubmit()" novalidate>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Message</label>
+                    <textarea placeholder="Message" formControlName="message" type="text" class="form-control" rows="5">
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Signature</label>
+                    <input placeholder="Signature" formControlName="signature" type="text" class="form-control">
+                </div>
+                <button class="btn btn-outline-primary btn-space" type="submit">
+                    Add Message
                 </button>
             </form>
         </div>

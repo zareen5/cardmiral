@@ -6,7 +6,7 @@ import { Message } from '../models/message.model';
 
 const COLLECTION_NAME: string = "cards";
 
-const DEFAULT_CARD: Card = {
+export const DEFAULT_CARD: Card = {
   recipient: '',
   email: '',
   sender: '',
@@ -32,7 +32,7 @@ export class CardsService {
   })
   
   createCard(card: Card) {
-    return this.db.collection(COLLECTION_NAME).add({DEFAULT_CARD, ...card});
+    return this.db.collection(COLLECTION_NAME).add({...DEFAULT_CARD, ...card});
   }
 
   retrieveCard(cardId: string) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CardsService } from '../services/card.service';
+import { CardsService, DEFAULT_CARD } from '../services/card.service';
 
 @Component({
   selector: 'app-create-card',
@@ -8,8 +8,8 @@ import { CardsService } from '../services/card.service';
   styleUrls: ['./create-card.component.scss']
 })
 export class CreateCardComponent implements OnInit {
-  type: any;
-   id!: string;
+  card: any;
+  id!: string;
 
   constructor(
     public cardsService: CardsService,
@@ -17,14 +17,15 @@ export class CreateCardComponent implements OnInit {
     private router: Router ) { }
 
   ngOnInit(): void {
-    this.type = this.route.snapshot.paramMap.get('type');
+    this.card = DEFAULT_CARD;
+    this.card.type = this.route.snapshot.paramMap.get('type');
    }
 
   revert (){}
 
   onSubmit(){
     let data = this.cardsService.cardForm.value;
-    this.cardsService.createCard({'type': this.type, ...data})
+    this.cardsService.createCard({...this.card, ...data})
       .then(res => {
         this.id = res.id;
         this.cardsService.cardForm.reset();

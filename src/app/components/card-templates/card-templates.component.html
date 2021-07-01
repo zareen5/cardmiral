@@ -1,10 +1,74 @@
-<mat-card class="example-card">
- 
-    <img mat-card-image src="{{getUrl()}}" alt="B day">
-    <mat-card-content>
-      <p>
-       
-      </p>
-    </mat-card-content>
-  
-  </mat-card>
+<mat-card>
+  <mat-card-content>
+    <ngb-carousel #carousel *ngIf="card" [wrap]="false" [interval]="2000" class="carousel-dark">
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="{{getCover()}}" alt="{{card.type}}" class="fixed-size">
+        </div>
+      </ng-template>
+      <ng-template ngbSlide>
+        <div class="picsum-img-wrapper">
+          <img src="{{getCover()}}" alt="Recipient" class="transparent fixed-size">
+        </div>
+        <div class="carousel-caption custom-caption">
+          <h3>Card for {{ card.recipient }}</h3>
+          <h3>From {{ card.sender }}</h3>
+        </div>
+      </ng-template>
+      
+      <ng-template ngbSlide *ngIf="card.messages.length > 0">
+        <div class="picsum-img-wrapper">
+          <img src="{{getCover()}}" alt="Messages" class="transparent fixed-size">
+        </div>
+        <div class="carousel-caption custom-caption">
+          <tr *ngFor="let message of card.messages | slice: 0 : 4;" class="custom-card-container">
+            <mat-card class="custom-card">
+              <mat-card-content class="custom-content">
+                <p>{{ message.message }}</p>
+              </mat-card-content>
+              <div class="custom-footer">
+                <p>- {{ message.signature }}</p>
+              </div>
+            </mat-card>
+          </tr>
+        </div>
+      </ng-template>
+
+      <ng-template ngbSlide *ngIf="card.messages.length > 4">
+        <div class="picsum-img-wrapper">
+          <img src="{{getCover()}}" alt="Messages" class="transparent fixed-size">
+        </div>
+        <div class="carousel-caption custom-caption">
+          <tr *ngFor="let message of card.messages | slice: 4 : 7;" class="custom-card-container">
+            <mat-card class="custom-card">
+              <mat-card-content class="custom-content">
+                <p>{{ message.message }}</p>
+              </mat-card-content>
+              <div class="custom-footer">
+                <p>- {{ message.signature }}</p>
+              </div>
+            </mat-card>
+          </tr>
+        </div>
+      </ng-template>
+
+      <ng-template ngbSlide *ngIf="card.messages.length > 8">
+        <div class="picsum-img-wrapper">
+          <img src="{{getCover()}}" alt="Messages" class="transparent fixed-size">
+        </div>
+        <div class="carousel-caption custom-caption">
+          <tr *ngFor="let message of card.messages | slice: 8 : 11;" class="custom-card-container">
+            <mat-card class="custom-card">
+              <mat-card-content class="custom-content">
+                <p>{{ message.message }}</p>
+              </mat-card-content>
+              <div class="custom-footer">
+                <p>- {{ message.signature }}</p>
+              </div>
+            </mat-card>
+          </tr>
+        </div>
+      </ng-template>
+    </ngb-carousel>    
+  </mat-card-content>
+</mat-card>

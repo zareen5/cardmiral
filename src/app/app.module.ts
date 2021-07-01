@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 
 // Material UI
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,6 +29,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // Services
 import { CardsService } from './services/card.service';
+import { EmailService } from './services/email.service';
 
 const config = {
   apiKey: "AIzaSyAqXskhRHylMf86lFJ33omYh8-wcm3TB5c",
@@ -61,10 +63,14 @@ const config = {
     AngularFireStorageModule,
     BrowserAnimationsModule,
     NgbModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
 
   ],
-  providers: [CardsService],
+  providers: [
+    CardsService,
+    EmailService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

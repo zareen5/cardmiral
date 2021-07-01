@@ -1,21 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Card } from 'src/app/models/card.model';
+import { DEFAULT_CARD } from 'src/app/services/card.service';
 
 @Component({
   selector: 'app-card-templates',
   templateUrl: './card-templates.component.html',
-  styleUrls: ['./card-templates.component.scss']
+  styleUrls: ['./card-templates.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CardTemplatesComponent implements OnInit {
-  @Input() 
-  type = '';
+  @Input()
+  card: Card = DEFAULT_CARD;
+  pagination = [0, 4, 8, 12];
 
   constructor() { }
 
   ngOnInit(): void {
+    //
   }
 
-  getUrl() {
-    return 'assets/' + this.type + '.png';
+  getCover() {
+    return 'assets/' + this.card.type + '.png';
   }
 
+  getBlank() {
+    return 'assets/blank.png';
+  }
 }

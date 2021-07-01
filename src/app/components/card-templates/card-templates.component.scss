@@ -1,0 +1,52 @@
+.transparent
+{
+    opacity: 0.1;
+}
+
+.fixed-size
+{
+    height: 700px;
+    width: 500px;
+}
+
+.black
+{
+    color: black;
+}
+
+.custom-caption {
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    right: 10%;
+    left: 10%;
+    color: black;
+}
+
+.carousel-control-prev-icon{
+    background-image: url('https://apufpel.com.br/assets/img/seta_prim.png')
+ }
+
+ .carousel-control-next-icon{
+   background-image: url('https://apufpel.com.br/assets/img/seta_ult.png')
+ }
+
+.custom-card-container {
+    height: 20%;
+    margin: 25px;
+}
+
+.custom-card {
+    height: 100%;
+    margin: 10px;
+}
+
+.custom-content {
+    margin-left: 5px;
+    text-align: start;
+}
+
+.custom-footer {
+    margin: 5px;
+    text-align: end;
+}
