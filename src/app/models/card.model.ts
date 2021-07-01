@@ -9,3 +9,12 @@ export interface Card {
     scheduledTime?: Date
     messages: Message[]
 }
+
+
+export interface NewCard {
+    creatorEmail: string;
+    card: Card;
+    toEmail: string;
+    introMessage: string;
+    expiryData: Date;
+}
