@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CardsService, DEFAULT_CARD } from '../services/card.service';
+import { EmailService } from '../services/email.service';
 
 @Component({
   selector: 'app-create-card',
@@ -10,11 +11,12 @@ import { CardsService, DEFAULT_CARD } from '../services/card.service';
 export class CreateCardComponent implements OnInit {
   card: any;
   id!: string;
+  modalVisible: boolean = false;
 
   constructor(
     public cardsService: CardsService,
-    private route: ActivatedRoute,
-    private router: Router ) { }
+    private emailService: EmailService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.card = DEFAULT_CARD;
@@ -29,8 +31,12 @@ export class CreateCardComponent implements OnInit {
       .then(res => {
         this.id = res.id;
         this.cardsService.cardForm.reset();
-        this.router.navigate(['add-wishes', this.id]);
         this.cardsService.messageForm.reset();
+        this.modalVisible = true;
+
+        this.emailService.scheduleEmail(this.card);
+
+        /// http://localhost:4200/add-wishes/mg2Ra5oyVxBQcQ0cs43G TODO: show on modal
       });
   }
 }

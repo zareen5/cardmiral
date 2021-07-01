@@ -22,14 +22,17 @@ export class EmailService {
   scheduleEmail(card: Card) {
     let cardData: RequestBody = {
       toEmail: card.email,
-      date: card.scheduledTime?.getDay.toString() || '',
-      month: card.scheduledTime?.getMonth.toString() || '',
-      hour: card.scheduledTime?.getHours.toString() || '',
-      minute: card.scheduledTime?.getMinutes.toString() || '',
+      date: card.scheduledTime?.getDay().toString() || '',
+      month: card.scheduledTime?.getMonth().toString() || '',
+      hour: card.scheduledTime?.getHours().toString() || '',
+      minute: (card.scheduledTime?.getMinutes() + 3).toString() || '',
       cardUrl: 'http://localhost:4200/view-card/' + card.id
-
     }
+    console.log("email before");
 
-    return this.http.post<RequestBody>(this.emailUrl, cardData);
+    this.http.post<RequestBody>(this.emailUrl, cardData, {headers:{ "content-type": 'application/json'}})
+      .subscribe(() => {console.log("email inside")});
+
+    console.log("email after");
   }
 }

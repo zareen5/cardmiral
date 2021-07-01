@@ -6,15 +6,6 @@
           <img src="{{getCover()}}" alt="{{card.type}}" class="fixed-size">
         </div>
       </ng-template>
-      <ng-template ngbSlide>
-        <div class="picsum-img-wrapper">
-          <img src="{{getCover()}}" alt="Recipient" class="transparent fixed-size">
-        </div>
-        <div class="carousel-caption custom-caption">
-          <h3>Card for {{ card.recipient }}</h3>
-          <h3>From {{ card.sender }}</h3>
-        </div>
-      </ng-template>
       
       <ng-template ngbSlide *ngIf="card.messages.length > 0">
         <div class="picsum-img-wrapper">

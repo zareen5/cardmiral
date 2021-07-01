@@ -11,6 +11,7 @@ export const DEFAULT_CARD: Card = {
   email: '',
   sender: '',
   type: '',
+  scheduledTime: new Date(),
   messages: []
 }
 
