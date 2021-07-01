@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-card-templates',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-templates.component.scss']
 })
 export class CardTemplatesComponent implements OnInit {
+  @Input() 
+  type = '';
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getUrl() {
+    return 'assets/' + this.type + '.png';
   }
 
 }

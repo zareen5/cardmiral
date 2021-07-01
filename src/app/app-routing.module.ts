@@ -7,8 +7,8 @@ import { CreateCardComponent } from './create-card/create-card.component';
 const routes: Routes = [
  { path: '', redirectTo: '/home', pathMatch: 'full' },
  { path: 'home', component: HomeComponent },
- { path: 'new-card', component: CreateCardComponent },
- { path: 'add-wishes/:id', component: AddWishesComponent }
+ { path: 'add-wishes/:id', component: AddWishesComponent },
+ { path: 'new-card/:type', component: CreateCardComponent }
 ];
 
 @NgModule({
