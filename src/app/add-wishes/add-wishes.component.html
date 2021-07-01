@@ -13,13 +13,13 @@
             </mat-card>
         </div>
         <div class="col-md-6">
-            <form [formGroup]="this.cardsService.form">
+            <form [formGroup]="this.cardsService.messageForm">
                 <input placeholder="Message" 
                        formControlName="message" 
                        type="text" 
                        class="input-field col s12">
                 <input placeholder="Signature" 
-                       formControlName="signature" 
+                       formControlName="signature"
                        type="text" 
                        class="input-field col s12">
                 <button class="waves-effect waves-light btn col s12"

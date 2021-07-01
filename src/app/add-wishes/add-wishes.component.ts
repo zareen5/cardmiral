@@ -4,7 +4,6 @@ import { CardsService } from '../services/card.service';
 import { Card } from '../models/card.model';
 
 const DEFAULT_CARD: Card = {
-  id: '',
   recipient: '',
   email: '',
   sender: '',
@@ -38,11 +37,11 @@ export class AddWishesComponent implements OnInit {
   }
 
   onSubmit(): void {
-    let data = this.cardsService.form.value;
+    let data = this.cardsService.messageForm.value;
     console.log(data);
     this.cardsService.addMessage(this.cardId, this.selectedCard, data)
       .then(res => {
-        this.cardsService.form.reset();
+        this.cardsService.messageForm.reset();
       });
   }
 }

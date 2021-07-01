@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { CardsService } from '../services/card.service';
 
 @Component({
   selector: 'app-create-card',
@@ -8,33 +8,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./create-card.component.scss']
 })
 export class CreateCardComponent implements OnInit {
-  contactForm: FormGroup ;
   type: any;
 
-  constructor(private formBuilder: FormBuilder,  private route: ActivatedRoute, private _activatedRoute: ActivatedRoute) { 
-    this.contactForm = this.createFormGroup() ;
-  }
+  constructor(
+    public cardsService: CardsService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.type = this.route.snapshot.paramMap.get('type');
-    // this.parameterValue = this._activatedRoute.snapshot.params.parameter
+   }
+
+  revert (){}
+
+  onSubmit(){
+    let data = this.cardsService.cardForm.value;
+    this.cardsService.createCard({'type': this.type, ...data})
+      .then(res => {
+        this.cardsService.messageForm.reset();
+      });
   }
-
-  createFormGroup() {
-
-    return this.formBuilder.group( {
-      cardFor: '',
-      cardForEmail:'',
-      signers: '',
-      requestor: '',
-      expiryData: ''
-
-    })
-  }
-
-revert (){}
-
-onSubmit(){
-  //I will cre
-}
 }

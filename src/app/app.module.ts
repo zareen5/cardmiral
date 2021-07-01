@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 // Material UI
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,9 +17,8 @@ import { CreateCardComponent } from './create-card/create-card.component';
 import { AddWishesComponent } from './add-wishes/add-wishes.component';
 import { CardTemplatesComponent } from './components/card-templates/card-templates.component';
 
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
 
 // Firebase and Firestore
 import { AngularFireModule } from '@angular/fire';
@@ -61,9 +59,6 @@ const config = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    
-
-  
     BrowserAnimationsModule,
     NgbModule,
     FlexLayoutModule
