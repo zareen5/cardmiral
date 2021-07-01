@@ -5,6 +5,7 @@ export interface Card {
     recipient: string
     email: string
     sender: string
+    type: string
     scheduledTime: Date
     messages: Message[]
 }

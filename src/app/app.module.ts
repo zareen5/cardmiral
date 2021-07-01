@@ -21,6 +21,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+// Services
+import { CardsService } from './services/card.service';
+
 const config = {
   apiKey: "AIzaSyAqXskhRHylMf86lFJ33omYh8-wcm3TB5c",
   authDomain: "cardmiral.firebaseapp.com",
@@ -50,7 +53,7 @@ const config = {
     AngularFireStorageModule,
     NgbModule
   ],
-  providers: [],
+  providers: [CardsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
