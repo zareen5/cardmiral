@@ -6,13 +6,10 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
   templateUrl: './link-modal.component.html',
   styleUrls: ['./link-modal.component.scss']
 })
-export class LinkModalComponent implements OnInit {
+export class LinkModalComponent {
 
   constructor(
     public dialogRef: MatDialogRef<LinkModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string) { }
-
-  ngOnInit(): void {
-  }
 
 }

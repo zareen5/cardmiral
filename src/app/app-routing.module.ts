@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AddWishesComponent } from './add-wishes/add-wishes.component';
-import { CreateCardComponent } from './create-card/create-card.component';
-import { ViewCardComponent } from './view-card/view-card.component';
+import { HomeComponent } from './pages/home/home.component';
+import { AddWishesComponent } from './pages/add-wishes/add-wishes.component';
+import { CreateCardComponent } from './pages/create-card/create-card.component';
+import { ViewCardComponent } from './pages/view-card/view-card.component';
 
 const routes: Routes = [
  { path: '', redirectTo: '/home', pathMatch: 'full' },

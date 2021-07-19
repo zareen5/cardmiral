@@ -1,22 +1,34 @@
 import { Injectable } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Card } from '../models/card.model';
 import { Message } from '../models/message.model';
 
 const COLLECTION_NAME: string = "cards";
 
-export const DEFAULT_CARD: Card = {
+export const EMPTY_CARD: Card = {
   recipient: '',
   email: '',
   sender: '',
   type: '',
-  scheduledTime: {
+  scheduledDate: {
     day: 2,
     month: 7,
     year: 2021
   },
+  scheduledTime: {
+    hour: 8,
+    minute: 30,
+    second: 0
+  },
   messages: []
+}
+
+export const EMPTY_MESSAGE: Message = {
+  url: "",
+  message: "",
+  signature: "",
+  fontStyle: "Roboto",
+  position: { x: 0, y: 0}
 }
 
 @Injectable({
@@ -25,25 +37,8 @@ export const DEFAULT_CARD: Card = {
 export class CardsService {  
   constructor(private db: AngularFirestore) { }
   
-  cardForm = new FormGroup({
-    recipient: new FormControl(''),
-    email: new FormControl(''),
-    sender: new FormControl(''),
-    scheduledTime: new FormControl({day: 2, month: 7, year:2021})
-  });
-
-  messageForm = new FormGroup({        
-    message: new FormControl(''),
-    signature: new FormControl('')
-  })
-
-  reset() {
-    this.cardForm.reset();
-    this.messageForm.reset();
-  }
-  
   createCard(card: Card) {
-    return this.db.collection(COLLECTION_NAME).add({...DEFAULT_CARD, ...card});
+    return this.db.collection(COLLECTION_NAME).add(card);
   }
 
   retrieveCard(cardId: string) {

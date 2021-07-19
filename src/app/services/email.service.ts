@@ -11,8 +11,6 @@ interface RequestBody {
   cardUrl: string
 }
 
-const DELAY = 3;
-
 @Injectable({
   providedIn: "root"
 })
@@ -24,10 +22,10 @@ export class EmailService {
   scheduleEmail(card: Card) {
     let cardData: RequestBody = {
       toEmail: card.email,
-      date: card.scheduledTime?.day.toString() || '',
-      month: card.scheduledTime?.month.toString() || '',
-      hour: new Date().getHours().toString() || '',
-      minute: (new Date().getMinutes() + DELAY).toString() || '',
+      date: card.scheduledDate?.day.toString() || '',
+      month: card.scheduledDate?.month.toString() || '',
+      hour: card.scheduledTime?.hour.toString() || '',
+      minute: card.scheduledTime?.minute.toString() || '',
       cardUrl: 'http://localhost:4200/view-card/' + card.id
     }
     console.log(cardData);

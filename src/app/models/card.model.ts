@@ -6,10 +6,15 @@ export interface Card {
     email: string
     sender: string
     type: string
-    scheduledTime: {
+    scheduledDate: {
         day: number
         month: number
         year: number
+    }
+    scheduledTime: {
+        hour: number
+        minute: number
+        second: number
     }
     messages: Message[]
 }

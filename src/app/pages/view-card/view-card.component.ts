@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CardsService, DEFAULT_CARD } from '../services/card.service';
-import { Card } from '../models/card.model';
-
+import { CardsService, EMPTY_CARD } from '../../services/card.service';
+import { Card } from '../../models/card.model';
 
 @Component({
   selector: 'app-view-card',
@@ -11,18 +10,18 @@ import { Card } from '../models/card.model';
 })
 export class ViewCardComponent implements OnInit {
   cardId: string = '';
-  selectedCard: Card = DEFAULT_CARD;
+  selectedCard: Card = EMPTY_CARD;
 
   constructor(private route: ActivatedRoute, public cardsService: CardsService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.cardId = this.route.snapshot.paramMap.get('id') || '';
     this.getCard();
   }
 
-  getCard(): void {
+  getCard() {
     this.cardsService.retrieveCard(this.cardId)
-      .subscribe((res: any) => {
+      .subscribe(res => {
         this.selectedCard = res.payload.data() as Card;
       });
   }

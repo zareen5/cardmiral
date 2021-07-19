@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { CdkDragEnd } from '@angular/cdk/drag-drop';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { Card } from 'src/app/models/card.model';
-import { DEFAULT_CARD } from 'src/app/services/card.service';
+import { EMPTY_CARD } from 'src/app/services/card.service';
 
 @Component({
   selector: 'app-card-templates',
@@ -8,23 +9,24 @@ import { DEFAULT_CARD } from 'src/app/services/card.service';
   styleUrls: ['./card-templates.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class CardTemplatesComponent implements OnInit {
+export class CardTemplatesComponent {
   @Input()
-  card: Card = DEFAULT_CARD;
-  pagination = [0, 4, 8, 12];
+  card: Card = EMPTY_CARD;
 
-  constructor() { }
+  pageSize: number = 6;
+  pagination = [0,1,2,3,4].map(i => this.pageSize * i);
 
-  ngOnInit(): void {
-    //
+  updatePosition(event: CdkDragEnd, indexI: number, indexJ: number) {
+    let index = indexI * this.pageSize + indexJ;
+    let originalPosition = this.card.messages[index].position;
+
+    this.card.messages[index].position = {
+      x: originalPosition.x + event.distance.x,
+      y: originalPosition.y + event.distance.y
+    }
   }
 
-  getCover() {
-    if (this.card.type) {
-      return 'assets/' + this.card.type + '.png';
-    }
-    else {
-      return 'assets/blank.png';
-    }
+  getPages() {
+    return Math.ceil(this.card.messages.length / this.pageSize);
   }
 }
